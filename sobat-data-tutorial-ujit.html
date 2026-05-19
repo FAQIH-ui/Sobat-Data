@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cara Uji t di SPSS – Panduan Lengkap + Interpretasi | Sobat Data</title>
+<meta name="description" content="Tutorial lengkap cara uji t di SPSS: independent sample t-test dan paired sample t-test, langkah demi langkah dengan interpretasi output. Mudah dipahami untuk mahasiswa!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue-50: #E6F4FF; --blue-100: #BAE0FF; --blue-200: #91CAFF;
+    --blue-400: #4096FF; --blue-500: #1677FF; --blue-600: #0958D9;
+    --blue-700: #003EB3; --blue-900: #001D57;
+    --cyan-400: #13C2C2; --cyan-500: #06B6D4;
+    --green-50: #F0FDF4; --green-500: #22C55E; --green-700: #15803D;
+    --orange-50: #FFF7ED; --orange-500: #F97316;
+    --red-50: #FEF2F2; --red-500: #EF4444; --red-700: #B91C1C;
+    --gray-50: #F8FAFC; --gray-100: #F1F5F9; --gray-200: #E2E8F0;
+    --gray-400: #94A3B8; --gray-600: #475569; --gray-700: #334155; --gray-900: #0F172A;
+    --white: #FFFFFF;
+    --font: 'Plus Jakarta Sans', sans-serif;
+    --font-serif: 'Lora', serif;
+    --radius-sm: 8px; --radius-md: 12px; --radius-lg: 20px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(22,119,255,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); color: var(--gray-900); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.93); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gray-200); padding: 0 2rem;
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--blue-600); text-decoration: none; }
+  .logo-icon { width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(135deg, var(--blue-500), var(--cyan-500)); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem; }
+  .nav-back { display: flex; align-items: center; gap: 6px; color: var(--gray-600); font-size: 0.88rem; font-weight: 600; text-decoration: none; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--gray-200); transition: all 0.2s; }
+  .nav-back:hover { border-color: var(--blue-400); color: var(--blue-600); background: var(--blue-50); }
+  .nav-wa { display: flex; align-items: center; gap: 6px; background: #25D366; color: white; font-size: 0.82rem; font-weight: 700; padding: 6px 14px; border-radius: 999px; text-decoration: none; transition: all 0.2s; }
+  .nav-wa:hover { background: #1EBE5D; }
+
+  /* HERO ARTICLE */
+  .article-hero {
+    background: linear-gradient(160deg, #EBF4FF 0%, #F0FDFA 60%, white 100%);
+    padding: 60px 2rem 50px;
+  }
+  .article-hero-inner { max-width: 820px; margin: 0 auto; }
+  .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--gray-400); margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--blue-500); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { color: var(--gray-400); }
+  .article-tag {
+    display: inline-block; background: var(--blue-50); color: var(--blue-600);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 1rem;
+    border: 1px solid var(--blue-200);
+  }
+  .article-title { font-size: 2.4rem; font-weight: 800; line-height: 1.2; color: var(--gray-900); margin-bottom: 1rem; }
+  .article-title em { font-family: var(--font-serif); font-style: italic; color: var(--blue-500); }
+  .article-meta { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.5rem; }
+  .article-meta span { display: flex; align-items: center; gap: 5px; }
+  .article-desc { font-size: 1.05rem; color: var(--gray-600); line-height: 1.75; max-width: 680px; }
+
+  /* LAYOUT */
+  .article-layout {
+    max-width: 1100px; margin: 0 auto; padding: 50px 2rem 80px;
+    display: grid; grid-template-columns: 1fr 280px; gap: 3rem; align-items: start;
+  }
+  .article-body { min-width: 0; }
+
+  /* SIDEBAR */
+  .sidebar { position: sticky; top: 80px; }
+  .sidebar-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .sidebar-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--gray-700); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .toc-list { list-style: none; }
+  .toc-list li { margin-bottom: 6px; }
+  .toc-list a { font-size: 0.85rem; color: var(--gray-600); text-decoration: none; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; transition: color 0.2s; }
+  .toc-list a:hover { color: var(--blue-500); }
+  .toc-list a::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gray-400); margin-top: 8px; flex-shrink: 0; }
+  .sidebar-wa {
+    background: linear-gradient(135deg, #25D366, #1EBE5D);
+    border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; color: white;
+  }
+  .sidebar-wa p { font-size: 0.88rem; margin-bottom: 1rem; opacity: 0.9; line-height: 1.5; }
+  .sidebar-wa a { display: block; background: white; color: #1EBE5D; font-weight: 700; font-size: 0.9rem; padding: 0.65rem 1rem; border-radius: 999px; text-decoration: none; transition: all 0.2s; }
+  .sidebar-wa a:hover { background: #F0FDF4; }
+
+  /* ARTICLE CONTENT */
+  .article-body h2 {
+    font-size: 1.65rem; font-weight: 800; color: var(--gray-900);
+    margin: 2.5rem 0 1rem; line-height: 1.3;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--blue-100);
+  }
+  .article-body h2:first-child { margin-top: 0; }
+  .article-body h3 { font-size: 1.15rem; font-weight: 700; color: var(--gray-800, #1E293B); margin: 1.75rem 0 0.6rem; }
+  .article-body p { font-size: 0.97rem; color: var(--gray-700); margin-bottom: 1rem; line-height: 1.8; }
+  .article-body ul, .article-body ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+  .article-body li { font-size: 0.95rem; color: var(--gray-700); margin-bottom: 0.4rem; line-height: 1.7; }
+  .article-body strong { font-weight: 700; color: var(--gray-900); }
+
+  /* STEP BOXES */
+  .step-box {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+    padding: 1.25rem; margin-bottom: 0.85rem;
+    transition: box-shadow 0.2s;
+  }
+  .step-box:hover { box-shadow: var(--shadow-md); }
+  .step-num-badge {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+    color: white; font-size: 0.9rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.3rem; }
+  .step-content p { font-size: 0.88rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+  .step-content code {
+    display: inline-block; background: var(--blue-50); color: var(--blue-700);
+    padding: 1px 8px; border-radius: 4px; font-family: 'Courier New', monospace;
+    font-size: 0.85rem; margin: 2px 2px;
+  }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: var(--radius-md); padding: 1.1rem 1.25rem;
+    margin: 1.5rem 0; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .callout.info { background: var(--blue-50); border-left: 4px solid var(--blue-500); }
+  .callout.success { background: var(--green-50); border-left: 4px solid var(--green-500); }
+  .callout.warning { background: var(--orange-50); border-left: 4px solid var(--orange-500); }
+  .callout.danger { background: var(--red-50); border-left: 4px solid var(--red-500); }
+  .callout-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .callout-body { flex: 1; }
+  .callout-body strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+  .callout.info .callout-body strong { color: var(--blue-700); }
+  .callout.success .callout-body strong { color: var(--green-700); }
+  .callout.warning .callout-body strong { color: #C2410C; }
+  .callout.danger .callout-body strong { color: var(--red-700); }
+  .callout-body p { font-size: 0.88rem; color: var(--gray-700); margin: 0; line-height: 1.65; }
+
+  /* OUTPUT TABLE SIMULATION */
+  .output-box {
+    background: var(--gray-900); color: #E2E8F0; border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem; margin: 1.25rem 0; font-size: 0.85rem;
+    overflow-x: auto;
+  }
+  .output-box .output-label { color: var(--blue-400); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+  .output-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .output-table th { background: rgba(255,255,255,0.08); padding: 6px 10px; text-align: left; color: #94A3B8; font-weight: 600; font-size: 0.78rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .output-table td { padding: 6px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #E2E8F0; }
+  .output-table tr:last-child td { border-bottom: none; }
+  .highlight-cell { color: #34D399 !important; font-weight: 700; }
+  .highlight-row td { background: rgba(52,211,153,0.08); }
+
+  /* DECISION BOX */
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+  .decision-card {
+    border-radius: var(--radius-md); padding: 1.1rem;
+    text-align: center;
+  }
+  .decision-card.accept { background: var(--green-50); border: 2px solid var(--green-500); }
+  .decision-card.reject { background: var(--red-50); border: 2px solid var(--red-500); }
+  .decision-card .condition { font-size: 1rem; font-weight: 800; margin-bottom: 0.3rem; }
+  .decision-card.accept .condition { color: var(--green-700); }
+  .decision-card.reject .condition { color: var(--red-700); }
+  .decision-card p { font-size: 0.82rem; color: var(--gray-600); margin: 0; line-height: 1.5; }
+
+  /* RELATED ARTICLES */
+  .related-section { border-top: 1px solid var(--gray-200); padding-top: 2rem; margin-top: 3rem; }
+  .related-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--gray-900); }
+  .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .related-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md); padding: 1rem;
+    text-decoration: none; color: inherit; display: flex; gap: 12px; align-items: center;
+    transition: all 0.2s;
+  }
+  .related-card:hover { background: var(--blue-50); border-color: var(--blue-200); box-shadow: var(--shadow-sm); }
+  .related-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .related-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--gray-900); margin-bottom: 2px; }
+  .related-card p { font-size: 0.78rem; color: var(--gray-500); margin: 0; }
+
+  /* CTA BOTTOM */
+  .cta-bottom {
+    background: linear-gradient(135deg, var(--blue-600), var(--blue-900));
+    border-radius: var(--radius-lg); padding: 2rem; margin-top: 2.5rem;
+    text-align: center; color: white;
+  }
+  .cta-bottom h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .cta-bottom p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1.25rem; line-height: 1.6; }
+  .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 0.75rem 1.5rem; border-radius: 999px; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.3); transition: all 0.2s; }
+  .btn-wa:hover { background: #1EBE5D; transform: translateY(-2px); }
+
+  /* FOOTER */
+  .article-footer { background: var(--gray-900); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 0.85rem; }
+  .article-footer a { color: var(--blue-400); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .article-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .article-title { font-size: 1.9rem; }
+  }
+  @media (max-width: 600px) {
+    .article-hero { padding: 40px 1.25rem 36px; }
+    .article-layout { padding: 32px 1.25rem 60px; gap: 2rem; }
+    .article-title { font-size: 1.55rem; }
+    .article-body h2 { font-size: 1.3rem; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-back span { display: none; }
+  }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="sobat-data-landing.html" class="logo">
+      <div class="logo-icon">📊</div>
+      Sobat Data
+    </a>
+    <div style="display:flex; gap: 0.75rem; align-items:center;">
+      <a href="sobat-data-landing.html#tutorial" class="nav-back">← <span>Tutorial</span></a>
+      <a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20butuh%20bantuan%20uji%20t!" class="nav-wa">💬 Minta Bantuan</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <div class="breadcrumb">
+      <a href="sobat-data-landing.html">Home</a>
+      <span>›</span>
+      <a href="sobat-data-landing.html#tutorial">Tutorial</a>
+      <span>›</span>
+      <span>Cara Uji t di SPSS</span>
+    </div>
+    <span class="article-tag">📊 SPSS · Statistik</span>
+    <h1 class="article-title">Cara <em>Uji t</em> di SPSS – Panduan Lengkap + Interpretasi Hasil</h1>
+    <div class="article-meta">
+      <span>⏱ Estimasi baca: 8 menit</span>
+      <span>🔰 Tingkat: Pemula</span>
+      <span>🔄 Diperbarui: 2024</span>
+      <span>👁 1.243 views</span>
+    </div>
+    <p class="article-desc">Panduan lengkap cara melakukan uji t di SPSS — mulai dari <strong>Independent Sample T-Test</strong> hingga <strong>Paired Sample T-Test</strong> — beserta langkah-langkah input data, pengujian, dan cara membaca output SPSS secara mudah.</p>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="article-layout">
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+
+    <div class="callout info fade-up">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Sebelum Mulai – Apa itu Uji t?</strong>
+        <p>Uji t adalah uji statistik yang digunakan untuk membandingkan rata-rata dua kelompok data. Ada dua jenis utama: <strong>Independent Sample T-Test</strong> (dua kelompok berbeda/tidak berpasangan) dan <strong>Paired Sample T-Test</strong> (satu kelompok diukur dua kali, misalnya pre-test dan post-test).</p>
+      </div>
+    </div>
+
+    <!-- PART 1: INDEPENDENT -->
+    <h2 id="independent">Bagian 1: Uji t Independent Sample (Dua Kelompok Berbeda)</h2>
+    <p>Uji t independent digunakan ketika kamu ingin membandingkan rata-rata dua kelompok yang <strong>berbeda/tidak berpasangan</strong>. Contoh: membandingkan rata-rata nilai ujian antara kelompok A (metode ceramah) dengan kelompok B (metode diskusi).</p>
+
+    <h3 id="syarat-independent">Syarat Penggunaan</h3>
+    <ul>
+      <li>Data berskala interval atau rasio (kuantitatif)</li>
+      <li>Kedua kelompok <strong>tidak berpasangan</strong> (independent)</li>
+      <li>Data berdistribusi <strong>normal</strong> (bisa dicek dengan uji Shapiro-Wilk atau Kolmogorov-Smirnov)</li>
+      <li>Varians kedua kelompok <strong>homogen</strong> (dicek via Levene's Test)</li>
+    </ul>
+
+    <div class="callout warning fade-up">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body">
+        <strong>Penting!</strong>
+        <p>Sebelum uji t, lakukan uji normalitas terlebih dahulu. Jika data tidak normal, gunakan alternatif non-parametris yaitu <strong>Mann-Whitney U Test</strong> (untuk independent) atau <strong>Wilcoxon</strong> (untuk paired).</p>
+      </div>
+    </div>
+
+    <h3 id="langkah-independent">Langkah-Langkah di SPSS</h3>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">1</div>
+      <div class="step-content">
+        <h4>Input Data di Variable View</h4>
+        <p>Buka SPSS → klik <code>Variable View</code>. Buat dua variabel:<br>
+        Variabel pertama: <code>Hasil</code> (nilai ujian, tipe Scale).<br>
+        Variabel kedua: <code>Kelompok</code> (tipe Nominal) — isi dengan kode 1 = Kelompok A, 2 = Kelompok B.</p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">2</div>
+      <div class="step-content">
+        <h4>Masukkan Data di Data View</h4>
+        <p>Klik <code>Data View</code>. Masukkan data nilai dan kode kelompok sesuai masing-masing responden. Pastikan data sudah lengkap dan tidak ada yang kosong.</p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">3</div>
+      <div class="step-content">
+        <h4>Akses Menu Uji t Independent</h4>
+        <p>Klik menu: <code>Analyze</code> → <code>Compare Means</code> → <code>Independent-Samples T Test...</code></p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">4</div>
+      <div class="step-content">
+        <h4>Atur Variabel</h4>
+        <p>Pindahkan variabel <code>Hasil</code> ke kotak <strong>Test Variable(s)</strong>. Pindahkan variabel <code>Kelompok</code> ke kotak <strong>Grouping Variable</strong>. Klik <code>Define Groups</code> → isi Group 1: <code>1</code>, Group 2: <code>2</code>. Klik <code>Continue</code>.</p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">5</div>
+      <div class="step-content">
+        <h4>Klik OK dan Lihat Output</h4>
+        <p>Klik <code>OK</code>. SPSS akan menampilkan jendela output dengan beberapa tabel hasil analisis.</p>
+      </div>
+    </div>
+
+    <h3 id="output-independent">Membaca Output Uji t Independent</h3>
+    <p>Ada dua tabel utama yang perlu diperhatikan: <strong>Group Statistics</strong> dan <strong>Independent Samples Test</strong>.</p>
+
+    <div class="output-box fade-up">
+      <div class="output-label">📋 Contoh Output: Group Statistics</div>
+      <table class="output-table">
+        <thead>
+          <tr><th>Kelompok</th><th>N</th><th>Mean</th><th>Std. Deviation</th><th>Std. Error Mean</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kelompok A (1)</td><td>6</td><td>77,83</td><td>9,45</td><td>3,86</td></tr>
+          <tr><td>Kelompok B (2)</td><td>5</td><td>87,24</td><td>6,72</td><td>3,01</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Dari tabel di atas terlihat rata-rata Kelompok B (87,24) lebih tinggi dari Kelompok A (77,83). Namun apakah perbedaan ini <em>signifikan secara statistik</em>? Cek tabel berikutnya.</p>
+
+    <div class="output-box fade-up">
+      <div class="output-label">📋 Contoh Output: Independent Samples Test (fokus pada Sig. dan t)</div>
+      <table class="output-table">
+        <thead>
+          <tr><th></th><th>Levene's F</th><th>Sig. Levene</th><th>t</th><th>df</th><th class="highlight-cell">Sig. (2-tailed)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>Equal variances assumed</td><td>1,234</td><td>0,289</td><td>-2,419</td><td>18</td><td class="highlight-cell">0,019</td></tr>
+          <tr><td>Equal variances not assumed</td><td>—</td><td>—</td><td>-2,489</td><td>17,3</td><td>0,023</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout success fade-up">
+      <span class="callout-icon">✅</span>
+      <div class="callout-body">
+        <strong>Cara Baca Levene's Test dulu!</strong>
+        <p>Lihat kolom <strong>Sig. Levene</strong>: jika > 0,05 → varians homogen → gunakan baris <em>Equal variances assumed</em>. Jika < 0,05 → tidak homogen → gunakan baris <em>Equal variances not assumed</em>. Pada contoh di atas: Sig. Levene = 0,289 > 0,05, jadi gunakan baris pertama.</p>
+      </div>
+    </div>
+
+    <h3 id="keputusan-independent">Dasar Pengambilan Keputusan</h3>
+    <div class="decision-grid fade-up">
+      <div class="decision-card accept">
+        <div class="condition">Sig. (2-tailed) &lt; 0,05</div>
+        <p><strong>H₀ ditolak</strong> — Ada perbedaan signifikan antara rata-rata kedua kelompok</p>
+      </div>
+      <div class="decision-card reject">
+        <div class="condition">Sig. (2-tailed) &gt; 0,05</div>
+        <p><strong>H₀ diterima</strong> — Tidak ada perbedaan signifikan antara rata-rata kedua kelompok</p>
+      </div>
+    </div>
+
+    <p>Pada contoh di atas, Sig. (2-tailed) = <strong>0,019 &lt; 0,05</strong>, sehingga <strong>H₀ ditolak</strong>. Kesimpulan: terdapat perbedaan rata-rata nilai ujian yang signifikan antara Kelompok A dan Kelompok B.</p>
+
+    <!-- PART 2: PAIRED -->
+    <h2 id="paired">Bagian 2: Uji t Paired Sample (Data Berpasangan)</h2>
+    <p>Uji t paired digunakan ketika kamu mengukur <strong>satu kelompok yang sama</strong> sebanyak dua kali. Contoh: nilai siswa sebelum dan sesudah mendapat perlakuan (pre-test dan post-test), atau berat badan sebelum dan sesudah program diet.</p>
+
+    <h3 id="syarat-paired">Syarat Penggunaan</h3>
+    <ul>
+      <li>Data berskala interval atau rasio</li>
+      <li>Dua pengukuran <strong>berpasangan</strong> dari subjek yang sama</li>
+      <li>Selisih antar pasangan data berdistribusi normal</li>
+    </ul>
+
+    <h3 id="langkah-paired">Langkah-Langkah di SPSS</h3>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">1</div>
+      <div class="step-content">
+        <h4>Input Data di Variable View</h4>
+        <p>Buka SPSS → <code>Variable View</code>. Buat dua variabel: <code>Pretest</code> dan <code>Posttest</code>. Keduanya bertipe Scale. Ubah kolom Decimals ke 0 jika data berupa angka bulat.</p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">2</div>
+      <div class="step-content">
+        <h4>Isi Data di Data View</h4>
+        <p>Masukkan nilai pre-test dan post-test tiap responden secara berpasangan per baris. Satu baris = satu responden.</p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">3</div>
+      <div class="step-content">
+        <h4>Akses Menu Uji t Paired</h4>
+        <p>Klik: <code>Analyze</code> → <code>Compare Means</code> → <code>Paired-Samples T Test...</code></p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">4</div>
+      <div class="step-content">
+        <h4>Atur Variabel Berpasangan</h4>
+        <p>Pilih variabel <code>Pretest</code> dan <code>Posttest</code> di daftar kiri, lalu klik tanda panah untuk memasukkannya ke kotak <strong>Paired Variables</strong> sebagai satu pasang. Ubah confidence interval jika diperlukan (default 95% / α = 0,05).</p>
+      </div>
+    </div>
+
+    <div class="step-box fade-up">
+      <div class="step-num-badge">5</div>
+      <div class="step-content">
+        <h4>Klik OK</h4>
+        <p>Klik <code>OK</code>. Output akan muncul di jendela SPSS Output Viewer.</p>
+      </div>
+    </div>
+
+    <h3 id="output-paired">Membaca Output Uji t Paired</h3>
+
+    <div class="output-box fade-up">
+      <div class="output-label">📋 Contoh Output: Paired Samples Statistics</div>
+      <table class="output-table">
+        <thead>
+          <tr><th></th><th>Mean</th><th>N</th><th>Std. Deviation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pretest</td><td>54,62</td><td>13</td><td>10,300</td></tr>
+          <tr><td>Posttest</td><td>67,69</td><td>13</td><td>10,727</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="output-box fade-up">
+      <div class="output-label">📋 Contoh Output: Paired Samples Correlations</div>
+      <table class="output-table">
+        <thead>
+          <tr><th>Pair</th><th>N</th><th>Correlation</th><th class="highlight-cell">Sig.</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>Pretest – Posttest</td><td>13</td><td>0,921</td><td class="highlight-cell">0,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Nilai korelasi <strong>0,921</strong> menunjukkan hubungan yang sangat kuat antara pretest dan posttest. Sig. = 0,000 &lt; 0,05, artinya korelasi tersebut signifikan.</p>
+
+    <div class="output-box fade-up">
+      <div class="output-label">📋 Contoh Output: Paired Samples Test (tabel utama keputusan)</div>
+      <table class="output-table">
+        <thead>
+          <tr><th>Pair</th><th>Mean Diff.</th><th>t</th><th>df</th><th class="highlight-cell">Sig. (2-tailed)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>Pretest – Posttest</td><td>-13,077</td><td>-8,451</td><td>12</td><td class="highlight-cell">0,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout success fade-up">
+      <span class="callout-icon">✅</span>
+      <div class="callout-body">
+        <strong>Interpretasi Hasil</strong>
+        <p>Sig. (2-tailed) = <strong>0,000 &lt; 0,05</strong> → <strong>H₀ ditolak</strong>. Ada perbedaan yang signifikan antara nilai pretest dan posttest. Nilai Mean Difference = -13,077 (negatif karena Pretest - Posttest), artinya rata-rata posttest <em>lebih tinggi</em> 13 poin dibanding pretest.</p>
+      </div>
+    </div>
+
+    <h3 id="keputusan-paired">Dasar Pengambilan Keputusan Paired T-Test</h3>
+    <div class="decision-grid fade-up">
+      <div class="decision-card accept">
+        <div class="condition">Sig. (2-tailed) &lt; 0,05</div>
+        <p><strong>H₀ ditolak</strong> — Ada perbedaan signifikan antara dua kondisi (sebelum dan sesudah)</p>
+      </div>
+      <div class="decision-card reject">
+        <div class="condition">Sig. (2-tailed) &gt; 0,05</div>
+        <p><strong>H₀ diterima</strong> — Tidak ada perbedaan signifikan antara dua kondisi</p>
+      </div>
+    </div>
+
+    <!-- KESIMPULAN -->
+    <h2 id="kesimpulan">Ringkasan: Pilih Uji t yang Mana?</h2>
+    <div class="output-box fade-up" style="background: #1E293B;">
+      <div class="output-label">📌 Panduan Cepat Memilih Jenis Uji t</div>
+      <table class="output-table">
+        <thead>
+          <tr><th>Kondisi Data</th><th>Jenis Uji</th><th>Menu SPSS</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2 kelompok berbeda, tidak berpasangan</td><td>Independent Sample T-Test</td><td>Analyze → Compare Means → Independent-Samples T Test</td></tr>
+          <tr><td>1 kelompok, diukur 2x (pre-post)</td><td>Paired Sample T-Test</td><td>Analyze → Compare Means → Paired-Samples T Test</td></tr>
+          <tr><td>1 kelompok vs nilai referensi</td><td>One Sample T-Test</td><td>Analyze → Compare Means → One-Sample T Test</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout danger fade-up">
+      <span class="callout-icon">🚫</span>
+      <div class="callout-body">
+        <strong>Jika Data Tidak Normal?</strong>
+        <p>Gunakan uji non-parametris sebagai alternatif: <strong>Mann-Whitney U Test</strong> (pengganti independent t-test) atau <strong>Wilcoxon Signed Rank Test</strong> (pengganti paired t-test). Keduanya tersedia di menu <code>Analyze → Nonparametric Tests</code>.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-bottom fade-up">
+      <h3>Masih bingung atau datamu susah diolah sendiri?</h3>
+      <p>Tim Sobat Data siap bantu dari input data, uji t, hingga interpretasi lengkap. Konsultasi awal GRATIS!</p>
+      <a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20butuh%20bantuan%20uji%20t%20SPSS!" class="btn-wa">
+        💬 Chat WhatsApp Sekarang
+      </a>
+    </div>
+
+    <!-- RELATED -->
+    <div class="related-section fade-up">
+      <h3>Tutorial Terkait</h3>
+      <div class="related-grid">
+        <a href="#" class="related-card">
+          <span class="related-icon">📐</span>
+          <div>
+            <h4>Cara Uji F (ANOVA) di SPSS</h4>
+            <p>Bandingkan lebih dari 2 kelompok sekaligus</p>
+          </div>
+        </a>
+        <a href="#" class="related-card">
+          <span class="related-icon">📈</span>
+          <div>
+            <h4>Regresi Linear Berganda di SPSS</h4>
+            <p>Analisis pengaruh beberapa variabel X terhadap Y</p>
+          </div>
+        </a>
+        <a href="#" class="related-card">
+          <span class="related-icon">✅</span>
+          <div>
+            <h4>Uji Validitas & Reliabilitas SPSS</h4>
+            <p>Pastikan kuesioner penelitianmu valid</p>
+          </div>
+        </a>
+        <a href="#" class="related-card">
+          <span class="related-icon">📊</span>
+          <div>
+            <h4>Cara Membaca Output SPSS</h4>
+            <p>Panduan lengkap interpretasi tabel SPSS</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h4>📑 Daftar Isi</h4>
+      <ul class="toc-list">
+        <li><a href="#independent">Independent Sample T-Test</a></li>
+        <li><a href="#syarat-independent">— Syarat penggunaan</a></li>
+        <li><a href="#langkah-independent">— Langkah di SPSS</a></li>
+        <li><a href="#output-independent">— Membaca output</a></li>
+        <li><a href="#keputusan-independent">— Pengambilan keputusan</a></li>
+        <li><a href="#paired">Paired Sample T-Test</a></li>
+        <li><a href="#syarat-paired">— Syarat penggunaan</a></li>
+        <li><a href="#langkah-paired">— Langkah di SPSS</a></li>
+        <li><a href="#output-paired">— Membaca output</a></li>
+        <li><a href="#keputusan-paired">— Pengambilan keputusan</a></li>
+        <li><a href="#kesimpulan">Ringkasan & Panduan Memilih</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-wa">
+      <p>Butuh bantuan olah data uji t untuk skripsi atau penelitianmu?</p>
+      <a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20butuh%20bantuan%20uji%20t%20SPSS!">💬 Konsultasi Gratis</a>
+    </div>
+
+    <div class="sidebar-card" style="margin-top: 0;">
+      <h4>📚 Tutorial Lainnya</h4>
+      <ul class="toc-list">
+        <li><a href="#">Uji F / ANOVA di SPSS</a></li>
+        <li><a href="#">Regresi Linear Berganda</a></li>
+        <li><a href="#">Uji Validitas SPSS</a></li>
+        <li><a href="#">Uji Reliabilitas SPSS</a></li>
+        <li><a href="#">Uji Normalitas SPSS</a></li>
+        <li><a href="#">Membaca Output SPSS</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<div class="article-footer">
+  <p>© 2024 <a href="sobat-data-landing.html">Sobat Data</a> · Sobat Terpercaya untuk Semua Kebutuhan Olah Data Anda</p>
+</div>
+
+<script>
+  // Scroll animations
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Active TOC highlight
+  const sections = document.querySelectorAll('[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    tocLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--blue-500)' : '';
+      a.style.fontWeight = a.getAttribute('href') === '#' + current ? '700' : '';
+    });
+  });
+</script>
+</body>
+</html>

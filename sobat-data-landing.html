@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sobat Data – Jasa Olah Data & Tutorial Statistik Terpercaya</title>
+<meta name="description" content="Jasa olah data profesional untuk mahasiswa dan peneliti. SPSS, regresi, uji t, uji F, validitas & reliabilitas. Konsultasi via WhatsApp!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --blue-50: #E6F4FF;
+    --blue-100: #BAE0FF;
+    --blue-200: #91CAFF;
+    --blue-400: #4096FF;
+    --blue-500: #1677FF;
+    --blue-600: #0958D9;
+    --blue-700: #003EB3;
+    --blue-900: #001D57;
+    --cyan-50: #E6FFFB;
+    --cyan-400: #13C2C2;
+    --cyan-500: #06B6D4;
+    --orange-400: #FB923C;
+    --orange-500: #F97316;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-900: #0F172A;
+    --white: #FFFFFF;
+    --font: 'Plus Jakarta Sans', sans-serif;
+    --font-serif: 'Lora', serif;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(22,119,255,0.10), 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 32px rgba(22,119,255,0.14), 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    color: var(--gray-900);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 800; font-size: 1.25rem; color: var(--blue-600);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue-500), var(--cyan-500));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1rem;
+  }
+  /* Untuk pakai logo asli: ganti .logo-icon dengan <img src="logoolahdata.png" height="38"> */
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    color: var(--gray-700); transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue-500); }
+  .nav-cta {
+    background: var(--blue-500); color: white !important;
+    padding: 0.5rem 1.25rem; border-radius: 999px;
+    font-size: 0.85rem !important; font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .nav-cta:hover { background: var(--blue-600) !important; transform: translateY(-1px); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gray-700); margin: 5px 0; border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu { display: none; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #EBF4FF 0%, #F0FDFA 40%, #FFF7ED 100%);
+    padding: 90px 2rem 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(22,119,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--blue-50); color: var(--blue-600);
+    border: 1px solid var(--blue-200); border-radius: 999px;
+    padding: 4px 14px; font-size: 0.8rem; font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .hero-badge .dot { width: 7px; height: 7px; background: var(--blue-500); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  h1 {
+    font-size: 3rem; font-weight: 800; line-height: 1.15;
+    color: var(--gray-900); margin-bottom: 1.25rem;
+  }
+  h1 span { color: var(--blue-500); }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--gray-600); line-height: 1.75;
+    margin-bottom: 2rem; max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue-500); color: white;
+    padding: 0.85rem 1.75rem; border-radius: 999px;
+    font-weight: 700; font-size: 1rem; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(22,119,255,0.35);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue-600); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(22,119,255,0.4); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; color: var(--blue-600);
+    padding: 0.85rem 1.75rem; border-radius: 999px;
+    font-weight: 600; font-size: 1rem; text-decoration: none;
+    border: 2px solid var(--blue-200);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--blue-400); background: var(--blue-50); transform: translateY(-2px); }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    position: relative; z-index: 1;
+  }
+  .stat-card {
+    background: white; border-radius: var(--radius-lg);
+    padding: 1.5rem 1.25rem; box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    transition: transform 0.3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); }
+  .stat-card .num { font-size: 2.2rem; font-weight: 800; color: var(--blue-600); line-height: 1; }
+  .stat-card .label { font-size: 0.8rem; color: var(--gray-600); margin-top: 4px; font-weight: 500; }
+  .stat-card.accent { background: linear-gradient(135deg, var(--blue-500), var(--blue-600)); color: white; }
+  .stat-card.accent .num { color: white; }
+  .stat-card.accent .label { color: rgba(255,255,255,0.8); }
+  .stat-card.wide { grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem; }
+  .stat-card.wide .avatar-row { display: flex; }
+  .stat-card.wide .avatar {
+    width: 36px; height: 36px; border-radius: 50%; border: 2px solid white;
+    background: linear-gradient(135deg, var(--blue-200), var(--blue-400));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; color: var(--blue-700);
+    margin-right: -10px;
+  }
+  .stat-card.wide .avatar:nth-child(2) { background: linear-gradient(135deg, var(--cyan-50), var(--cyan-400)); color: #0e7490; }
+  .stat-card.wide .avatar:nth-child(3) { background: linear-gradient(135deg, #FEF3C7, #FCD34D); color: #92400E; }
+  .stat-card.wide .avatar:last-child { margin-right: 0; }
+  .stars { color: #FBBF24; font-size: 0.9rem; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--gray-900); color: white; padding: 3rem 2rem;
+  }
+  .trust-bar-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-around; align-items: center; gap: 2rem; flex-wrap: wrap;
+  }
+  .trust-item { text-align: center; }
+  .trust-num { font-size: 2.5rem; font-weight: 800; color: var(--blue-400); line-height: 1; }
+  .trust-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+  .trust-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.15); }
+
+  /* SECTIONS */
+  section { padding: 80px 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: var(--blue-50); color: var(--blue-600);
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 0.75rem;
+    border: 1px solid var(--blue-200);
+  }
+  h2 {
+    font-size: 2.25rem; font-weight: 800; color: var(--gray-900);
+    line-height: 1.25; margin-bottom: 0.75rem;
+  }
+  h2 em { font-family: var(--font-serif); font-style: italic; color: var(--blue-500); }
+  .section-sub { font-size: 1.05rem; color: var(--gray-600); max-width: 540px; line-height: 1.7; }
+  .section-header { margin-bottom: 3rem; }
+
+  /* WHY US */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+  }
+  .why-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg); padding: 1.75rem 1.5rem;
+    transition: all 0.25s;
+  }
+  .why-card:hover { background: white; box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--blue-200); }
+  .why-icon {
+    width: 50px; height: 50px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--blue-50), var(--blue-100));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--blue-200);
+  }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--gray-900); }
+  .why-card p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.6; }
+
+  /* LAYANAN */
+  .layanan-bg { background: linear-gradient(180deg, #F8FAFC 0%, white 100%); }
+  .layanan-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .tab-btn {
+    padding: 0.5rem 1.25rem; border-radius: 999px; border: 2px solid var(--gray-200);
+    background: white; font-family: var(--font); font-size: 0.9rem; font-weight: 600;
+    color: var(--gray-600); cursor: pointer; transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover { border-color: var(--blue-500); color: var(--blue-600); background: var(--blue-50); }
+  .layanan-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+  }
+  .layanan-card {
+    background: white; border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-md); padding: 1.5rem 1.25rem;
+    cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .layanan-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue-400), var(--cyan-400));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .layanan-card:hover::before { transform: scaleX(1); }
+  .layanan-card:hover { border-color: var(--blue-300, #93C5FD); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .layanan-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+  .layanan-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.3rem; }
+  .layanan-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+  .layanan-card .badge {
+    display: inline-block; margin-top: 0.75rem; padding: 3px 10px;
+    background: var(--blue-50); color: var(--blue-600); border-radius: 999px;
+    font-size: 0.75rem; font-weight: 600;
+  }
+
+  /* TUTORIAL */
+  .tutorial-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  }
+  .tutorial-card {
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg); overflow: hidden;
+    transition: all 0.25s; text-decoration: none; color: inherit; display: block;
+  }
+  .tutorial-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--blue-200); }
+  .tutorial-thumb {
+    background: linear-gradient(135deg, var(--blue-500) 0%, var(--cyan-500) 100%);
+    padding: 1.5rem 1.5rem 1rem;
+    font-size: 2rem; display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .tutorial-thumb .tcat {
+    background: rgba(255,255,255,0.2); color: white;
+    font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    font-family: var(--font);
+  }
+  .tutorial-body { padding: 1.25rem; }
+  .tutorial-body h3 { font-size: 1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.4rem; }
+  .tutorial-body p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; }
+  .tutorial-meta {
+    display: flex; align-items: center; gap: 1rem; margin-top: 0.75rem;
+    font-size: 0.78rem; color: var(--gray-400);
+  }
+  .tutorial-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* PORTFOLIO */
+  .portfolio-bg { background: var(--gray-50); }
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  }
+  .portfolio-card {
+    background: white; border-radius: var(--radius-lg); border: 1px solid var(--gray-200);
+    overflow: hidden; transition: all 0.25s;
+  }
+  .portfolio-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+  .portfolio-card .pcard-top {
+    background: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+    padding: 1.5rem; color: white;
+  }
+  .portfolio-card.alt .pcard-top { background: linear-gradient(135deg, var(--cyan-400), var(--blue-500)); }
+  .portfolio-card.alt2 .pcard-top { background: linear-gradient(135deg, #8B5CF6, var(--blue-500)); }
+  .pcard-top h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .pcard-top .ptag { display: inline-block; background: rgba(255,255,255,0.2); color: white; font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; }
+  .portfolio-card .pcard-body { padding: 1.25rem; }
+  .pcard-body p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 0.75rem; }
+  .pcard-body .result {
+    display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--blue-600);
+    background: var(--blue-50); padding: 6px 10px; border-radius: var(--radius-sm);
+  }
+
+  /* TESTIMONI */
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .testi-card {
+    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+    padding: 1.75rem; transition: all 0.25s;
+  }
+  .testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+  .testi-stars { color: #FBBF24; font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .testi-text { font-size: 0.9rem; color: var(--gray-700); line-height: 1.7; font-family: var(--font-serif); font-style: italic; margin-bottom: 1.25rem; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .ta-blue { background: linear-gradient(135deg, var(--blue-400), var(--blue-600)); }
+  .ta-cyan { background: linear-gradient(135deg, var(--cyan-400), var(--blue-500)); }
+  .ta-orange { background: linear-gradient(135deg, var(--orange-400), var(--orange-500)); }
+  .testi-author .name { font-size: 0.88rem; font-weight: 700; color: var(--gray-900); }
+  .testi-author .role { font-size: 0.78rem; color: var(--gray-500); }
+
+  /* FAQ */
+  .faq-list { max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+    margin-bottom: 0.75rem; overflow: hidden; transition: all 0.2s;
+  }
+  .faq-item:hover { border-color: var(--blue-200); }
+  .faq-item.open { border-color: var(--blue-300, #93C5FD); box-shadow: var(--shadow-sm); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 1.5rem; cursor: pointer; background: white;
+    font-weight: 600; font-size: 0.95rem; color: var(--gray-900);
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--gray-50); }
+  .faq-item.open .faq-q { background: var(--blue-50); color: var(--blue-700); }
+  .faq-icon { font-size: 1.25rem; transition: transform 0.3s; color: var(--gray-400); }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--blue-500); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-a-inner { padding: 0 1.5rem 1.25rem; font-size: 0.9rem; color: var(--gray-600); line-height: 1.75; }
+
+  /* ORDER FLOW */
+  .flow-bg { background: linear-gradient(160deg, var(--blue-50) 0%, white 100%); }
+  .flow-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    position: relative; margin-bottom: 3rem;
+  }
+  .flow-steps::before {
+    content: ''; position: absolute;
+    top: 35px; left: calc(33.33% - 20px); right: calc(33.33% - 20px);
+    height: 2px; background: linear-gradient(90deg, var(--blue-300, #93C5FD), var(--cyan-400));
+    z-index: 0;
+  }
+  .flow-step { text-align: center; position: relative; z-index: 1; }
+  .step-num {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+    color: white; font-size: 1.5rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem; box-shadow: 0 4px 16px rgba(22,119,255,0.3);
+  }
+  .flow-step h3 { font-size: 1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.3rem; }
+  .flow-step p { font-size: 0.85rem; color: var(--gray-600); }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-900) 100%);
+    padding: 80px 2rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; top: -60%; left: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+  }
+  .cta-section h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; }
+  .cta-section h2 em { color: #7DD3FA; font-family: var(--font-serif); }
+  .cta-section p { color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 2rem; font-size: 1.05rem; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: white;
+    padding: 1rem 2rem; border-radius: 999px;
+    font-weight: 700; font-size: 1.05rem; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: all 0.2s;
+  }
+  .btn-wa:hover { background: #1EBE5D; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
+  .wa-icon {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-900); color: rgba(255,255,255,0.7);
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem;
+  }
+  .footer-brand .logo { color: white; margin-bottom: 0.75rem; display: inline-flex; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 300px; }
+  .footer-col h4 { font-size: 0.88rem; font-weight: 700; color: white; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.5rem; }
+  .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--blue-400); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+    .trust-divider { display: none; }
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-links.open { 
+      display: flex; flex-direction: column; gap: 0;
+      position: fixed; top: 68px; left: 0; right: 0;
+      background: white; border-bottom: 1px solid var(--gray-200);
+      padding: 1rem 0; z-index: 99;
+    }
+    .nav-links.open li a { display: block; padding: 0.75rem 2rem; font-size: 1rem; }
+    .nav-links.open .nav-cta { margin: 0.5rem 2rem; text-align: center; border-radius: var(--radius-md); }
+    .hamburger { display: block; }
+    h1 { font-size: 1.9rem; }
+    .hero { padding: 60px 1.25rem 70px; }
+    section { padding: 50px 1rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .trust-bar-inner { gap: 1.5rem; }
+    .trust-num { font-size: 2rem; }
+    .hero-visual { grid-template-columns: 1fr 1fr; }
+
+    /* WHY US → 2 kolom ringkas di HP */
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .why-card { padding: 1rem 0.9rem; }
+    .why-icon { width: 40px; height: 40px; font-size: 1.2rem; margin-bottom: 0.6rem; border-radius: 10px; }
+    .why-card h3 { font-size: 0.88rem; }
+    .why-card p { font-size: 0.78rem; line-height: 1.5; }
+
+    /* LAYANAN → 2 kolom ringkas di HP */
+    .layanan-grid { grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+    .layanan-card { padding: 1rem 0.85rem; }
+    .layanan-icon { font-size: 1.35rem; margin-bottom: 0.5rem; }
+    .layanan-card h3 { font-size: 0.82rem; }
+    .layanan-card p { font-size: 0.75rem; line-height: 1.4; }
+    .layanan-card .badge { font-size: 0.68rem; padding: 2px 8px; margin-top: 0.5rem; }
+
+    /* FLOW STEPS → 2 kolom di HP (step 1&2 atas, step 3 tengah bawah) */
+    .flow-steps { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .flow-steps::before { display: none; }
+    .flow-step:last-child { grid-column: 1 / -1; max-width: 220px; margin: 0 auto; }
+    .step-num { width: 56px; height: 56px; font-size: 1.25rem; }
+    .flow-step h3 { font-size: 0.9rem; }
+    .flow-step p { font-size: 0.8rem; }
+
+    /* TUTORIAL GRID → 1 col mobile */
+    .tutorial-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="logosobatdata.png" height="38" alt="Sobat Data">
+      <!-- Ganti baris di atas dengan: <img src="logoolahdata.png" height="38" alt="Sobat Data"> -->
+      Sobat Data
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#tutorial">Tutorial</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20ingin%20konsultasi!" class="nav-cta">💬 WhatsApp</a></li>
+    </ul>
+    <button class="hamburger" id="menuBtn" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 90px 2rem 100px;">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span> Terpercaya sejak 2020</div>
+      <h1>Bingung <span>Olah Data?</span> Sobat Data Siap Bantu!</h1>
+      <p class="hero-sub">Jasa olah data profesional + tutorial statistik mudah dipahami untuk mahasiswa dan peneliti Indonesia.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20ingin%20konsultasi!" class="btn-primary">
+          💬 Konsultasi via WhatsApp
+        </a>
+        <a href="#tutorial" class="btn-secondary">
+          📖 Lihat Tutorial
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card accent fade-up delay-1">
+        <div class="num">100+</div>
+        <div class="label">Project Selesai</div>
+      </div>
+      <div class="stat-card fade-up delay-2">
+        <div class="num" style="color:var(--blue-600);">4.9</div>
+        <div class="label">⭐ Rating klien</div>
+      </div>
+      <div class="stat-card fade-up delay-3">
+        <div class="num" style="color:var(--blue-600);">24h</div>
+        <div class="label">Rata-rata selesai</div>
+      </div>
+      <div class="stat-card fade-up delay-4">
+        <div class="num" style="color:var(--blue-600);">50+</div>
+        <div class="label">Tutorial gratis</div>
+      </div>
+      <div class="stat-card wide fade-up">
+        <div class="avatar-row">
+          <div class="avatar">AN</div>
+          <div class="avatar">RD</div>
+          <div class="avatar">FT</div>
+        </div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div style="font-size:0.82rem; color:var(--gray-600); margin-top:2px;">Klien puas dari seluruh Indonesia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-num">100+</div>
+      <div class="trust-label">Project Selesai</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">50+</div>
+      <div class="trust-label">Tutorial Gratis</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">4.9★</div>
+      <div class="trust-label">Rating Rata-rata</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">24 Jam</div>
+      <div class="trust-label">Fast Response</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">100%</div>
+      <div class="trust-label">Klien Puas</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section>
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Mengapa Sobat Data?</div>
+      <h2>Lebih dari Sekadar <em>Jasa Olah Data</em></h2>
+      <p class="section-sub">Kami hadir sebagai partner belajar dan problem solver, bukan sekadar penyedia jasa.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up delay-1">
+        <div class="why-icon">⚡</div>
+        <h3>Fast Response</h3>
+        <p>Balas dalam 1 jam di jam kerja. Konsultasi awal gratis tanpa ribet.</p>
+      </div>
+      <div class="why-card fade-up delay-2">
+        <div class="why-icon">🤝</div>
+        <h3>Friendly Support</h3>
+        <p>Penjelasan ramah dan sabar. Kamu bertanya sebanyak apapun, kita jawab.</p>
+      </div>
+      <div class="why-card fade-up delay-3">
+        <div class="why-icon">📚</div>
+        <h3>Tutorial Gratis</h3>
+        <p>50+ artikel tutorial statistik gratis. Belajar mandiri atau minta bantu, pilihan ada di tanganmu.</p>
+      </div>
+      <div class="why-card fade-up delay-4">
+        <div class="why-icon">💰</div>
+        <h3>Harga Fleksibel</h3>
+        <p>Harga menyesuaikan kompleksitas. Tidak ada tarif tersembunyi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section id="layanan" class="layanan-bg">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Layanan</div>
+      <h2>Apa yang Bisa <em>Kami Bantu?</em></h2>
+      <p class="section-sub">Dari kebutuhan akademik hingga bisnis, semua ada di sini.</p>
+    </div>
+    <div class="layanan-tabs">
+      <button class="tab-btn active" onclick="switchTab('akademik', this)">🎓 Akademik</button>
+      <button class="tab-btn" onclick="switchTab('bisnis', this)">📈 Bisnis</button>
+    </div>
+    <div id="tab-akademik" class="layanan-grid">
+      <div class="layanan-card fade-up delay-1">
+        <div class="layanan-icon">📊</div>
+        <h3>Uji t</h3>
+        <p>Independent sample t-test, paired t-test, interpretasi lengkap.</p>
+        <span class="badge">SPSS / R</span>
+      </div>
+      <div class="layanan-card fade-up delay-2">
+        <div class="layanan-icon">📐</div>
+        <h3>Uji F (ANOVA)</h3>
+        <p>One-way, two-way ANOVA beserta uji post-hoc.</p>
+        <span class="badge">SPSS</span>
+      </div>
+      <div class="layanan-card fade-up delay-3">
+        <div class="layanan-icon">📈</div>
+        <h3>Regresi Linear</h3>
+        <p>Simple & multiple regression, asumsi klasik, interpretasi koefisien.</p>
+        <span class="badge">SPSS / Excel</span>
+      </div>
+      <div class="layanan-card fade-up delay-4">
+        <div class="layanan-icon">✅</div>
+        <h3>Uji Validitas</h3>
+        <p>Pearson correlation, confirmatory factor analysis, analisis butir.</p>
+        <span class="badge">SPSS</span>
+      </div>
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">🔁</div>
+        <h3>Uji Reliabilitas</h3>
+        <p>Cronbach Alpha, split-half reliability, interpretasi output.</p>
+        <span class="badge">SPSS</span>
+      </div>
+      <div class="layanan-card fade-up delay-1">
+        <div class="layanan-icon">🧮</div>
+        <h3>Olah Data SPSS</h3>
+        <p>Input data, cleaning, analisis deskriptif, hingga interpretasi.</p>
+        <span class="badge">SPSS</span>
+      </div>
+    </div>
+    <div id="tab-bisnis" class="layanan-grid" style="display:none;">
+      <div class="layanan-card fade-up delay-1">
+        <div class="layanan-icon">📋</div>
+        <h3>Excel Advanced</h3>
+        <p>Pivot table, VLOOKUP, formula kompleks, dan otomasi data.</p>
+        <span class="badge">Excel</span>
+      </div>
+      <div class="layanan-card fade-up delay-2">
+        <div class="layanan-icon">📉</div>
+        <h3>Dashboard Sederhana</h3>
+        <p>Visualisasi data interaktif untuk monitoring bisnis dan laporan.</p>
+        <span class="badge">Excel / Spreadsheet</span>
+      </div>
+      <div class="layanan-card fade-up delay-3">
+        <div class="layanan-icon">📄</div>
+        <h3>Reporting & Analisis</h3>
+        <p>Laporan analitik bisnis, tren penjualan, dan rekomendasi data-driven.</p>
+        <span class="badge">Excel / Docs</span>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 2.5rem;" class="fade-up">
+      <a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20ingin%20konsultasi%20kebutuhan%20saya!" class="btn-primary">
+        Konsultasikan Kebutuhan Anda →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIAL -->
+<section id="tutorial">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Tutorial Gratis</div>
+      <h2>Belajar Statistik jadi <em>Lebih Mudah</em></h2>
+      <p class="section-sub">Artikel step-by-step, dengan screenshot dan penjelasan yang mudah dipahami semua kalangan.</p>
+    </div>
+    <div class="tutorial-grid">
+      <a href="sobat-data-tutorial-ujit.html" class="tutorial-card fade-up delay-1">
+        <div class="tutorial-thumb">
+          📊
+          <span class="tcat">SPSS</span>
+        </div>
+        <div class="tutorial-body">
+          <h3>Cara Uji t di SPSS – Panduan Lengkap 2024</h3>
+          <p>Pelajari cara melakukan uji t independent dan paired dari input data hingga interpretasi hasil secara lengkap.</p>
+          <div class="tutorial-meta">
+            <span>⏱ 8 menit</span>
+            <span>👁 1.2k views</span>
+            <span>🔰 Pemula</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="tutorial-card fade-up delay-2">
+        <div class="tutorial-thumb" style="background: linear-gradient(135deg, #0891B2, #1677FF);">
+          📐
+          <span class="tcat">ANOVA</span>
+        </div>
+        <div class="tutorial-body">
+          <h3>Cara Uji F (ANOVA) di SPSS + Interpretasi</h3>
+          <p>Memahami ANOVA one-way, two-way, dan cara membaca tabel signifikansi dengan mudah.</p>
+          <div class="tutorial-meta">
+            <span>⏱ 10 menit</span>
+            <span>👁 980 views</span>
+            <span>🔰 Menengah</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="tutorial-card fade-up delay-3">
+        <div class="tutorial-thumb" style="background: linear-gradient(135deg, #7C3AED, #1677FF);">
+          📈
+          <span class="tcat">Regresi</span>
+        </div>
+        <div class="tutorial-body">
+          <h3>Regresi Linear Berganda di SPSS – Step by Step</h3>
+          <p>Dari uji asumsi klasik, olah data, hingga interpretasi koefisien regresi secara komprehensif.</p>
+          <div class="tutorial-meta">
+            <span>⏱ 12 menit</span>
+            <span>👁 1.5k views</span>
+            <span>🔰 Menengah</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top: 2.5rem;" class="fade-up">
+      <a href="#" class="btn-secondary">Lihat Semua Tutorial →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="portfolio-bg">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Portfolio</div>
+      <h2>100+ Project <em>Berhasil</em> Diselesaikan</h2>
+      <p class="section-sub">Dari skripsi mahasiswa hingga riset profesional. Lihat beberapa studi kasus nyata kami.</p>
+    </div>
+    <div class="portfolio-grid fade-up">
+      <div class="portfolio-card">
+        <div class="pcard-top">
+          <span class="ptag">Skripsi</span>
+          <h3>Analisis Pengaruh Motivasi terhadap Prestasi Belajar</h3>
+        </div>
+        <div class="pcard-body">
+          <p>Regresi linear berganda dengan 150 responden. Uji asumsi klasik, multikolinearitas, dan heteroskedastisitas.</p>
+          <div class="result">✅ Semua uji lolos, skripsi disetujui</div>
+        </div>
+      </div>
+      <div class="portfolio-card alt">
+        <div class="pcard-top">
+          <span class="ptag">Penelitian</span>
+          <h3>Uji Validitas & Reliabilitas Kuesioner 40 Item</h3>
+        </div>
+        <div class="pcard-body">
+          <p>Cronbach Alpha 0.89, semua item valid dengan r > 0.3. Laporan lengkap dengan interpretasi dan rekomendasi.</p>
+          <div class="result">✅ Instrumen valid dan reliabel</div>
+        </div>
+      </div>
+      <div class="portfolio-card alt2">
+        <div class="pcard-top">
+          <span class="ptag">UMKM</span>
+          <h3>Dashboard Penjualan Toko Online 12 Bulan</h3>
+        </div>
+        <div class="pcard-body">
+          <p>Excel dashboard interaktif dengan pivot table, tren bulanan, dan analisis produk terlaris.</p>
+          <div class="result">✅ Insight actionable ditemukan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONI -->
+    <div class="testi-grid">
+      <div class="testi-card fade-up delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Sangat membantu! Regresi saya sempat error terus, tapi Sobat Data bantu sampai tuntas. Penjelasannya juga mudah dipahami."</p>
+        <div class="testi-author">
+          <div class="testi-avatar ta-blue">AN</div>
+          <div>
+            <div class="name">Annisa N.</div>
+            <div class="role">Mahasiswi S1 Psikologi, UGM</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Fast response banget! Saya konsultasi malam, pagi sudah jadi. Hasilnya rapi dan ada penjelasannya. Recommended!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar ta-cyan">RD</div>
+          <div>
+            <div class="name">Rendi D.</div>
+            <div class="role">Mahasiswa S2 Manajemen, UI</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Sudah 3x pakai jasa Sobat Data. Selalu puas dengan hasilnya. Harga terjangkau, kualitas tidak murahan."</p>
+        <div class="testi-author">
+          <div class="testi-avatar ta-orange">FT</div>
+          <div>
+            <div class="name">Fitri T.</div>
+            <div class="role">Peneliti, BRIN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FLOW -->
+<section class="flow-bg" id="order">
+  <div class="section-inner">
+    <div class="section-header fade-up" style="text-align:center;">
+      <div class="section-tag" style="margin: 0 auto 0.75rem;">Cara Order</div>
+      <h2>Super Simpel, <em>3 Langkah</em> Saja</h2>
+      <p class="section-sub" style="margin: 0 auto;">Tidak perlu ribet, tidak perlu daftar akun. Langsung konsultasi!</p>
+    </div>
+    <div class="flow-steps fade-up">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <h3>Pilih Layanan</h3>
+        <p>Tentukan kebutuhan analisis data kamu dari daftar layanan yang tersedia.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <h3>Isi Form Kebutuhan</h3>
+        <p>Ceritakan kebutuhanmu secara singkat — jenis data, deadline, dan tools yang dipakai.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <h3>Chat via WhatsApp</h3>
+        <p>Langsung terhubung dengan tim Sobat Data untuk konsultasi dan penawaran harga.</p>
+      </div>
+    </div>
+    <!-- SIMPLE FORM -->
+    <div style="background: white; border-radius: var(--radius-xl); border: 1px solid var(--gray-200); padding: 2.5rem; max-width: 640px; margin: 0 auto; box-shadow: var(--shadow-md);" class="fade-up">
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center; color: var(--gray-900);">Mulai Konsultasi Sekarang</h3>
+      <div style="display: grid; gap: 1rem;">
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--gray-700); margin-bottom:6px;">Nama Lengkap</label>
+          <input type="text" id="formNama" placeholder="Contoh: Budi Santoso" style="width:100%; padding: 0.75rem 1rem; border: 1.5px solid var(--gray-200); border-radius: var(--radius-md); font-family: var(--font); font-size: 0.95rem; outline: none; transition: border 0.2s;" onfocus="this.style.borderColor='var(--blue-400)'" onblur="this.style.borderColor='var(--gray-200)'">
+        </div>
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--gray-700); margin-bottom:6px;">Jenis Layanan yang Dibutuhkan</label>
+          <select id="formLayanan" style="width:100%; padding: 0.75rem 1rem; border: 1.5px solid var(--gray-200); border-radius: var(--radius-md); font-family: var(--font); font-size: 0.95rem; outline: none; background: white; color: var(--gray-900); transition: border 0.2s;" onfocus="this.style.borderColor='var(--blue-400)'" onblur="this.style.borderColor='var(--gray-200)'">
+            <option value="">-- Pilih layanan --</option>
+            <option>Uji t (SPSS)</option>
+            <option>Uji F / ANOVA (SPSS)</option>
+            <option>Regresi Linear</option>
+            <option>Uji Validitas & Reliabilitas</option>
+            <option>Olah Data SPSS Lengkap</option>
+            <option>Excel Advanced / Dashboard</option>
+            <option>Lainnya (konsultasi dulu)</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--gray-700); margin-bottom:6px;">Ceritakan Kebutuhan Singkat</label>
+          <textarea id="formKebutuhan" rows="3" placeholder="Contoh: Saya butuh regresi linear untuk skripsi, data sudah ada 100 responden, deadline 3 hari lagi..." style="width:100%; padding: 0.75rem 1rem; border: 1.5px solid var(--gray-200); border-radius: var(--radius-md); font-family: var(--font); font-size: 0.95rem; outline: none; resize: vertical; transition: border 0.2s;" onfocus="this.style.borderColor='var(--blue-400)'" onblur="this.style.borderColor='var(--gray-200)'"></textarea>
+        </div>
+        <button onclick="submitToWA()" style="width:100%; background: #25D366; color: white; border: none; padding: 1rem; border-radius: var(--radius-md); font-family: var(--font); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;" onmouseover="this.style.background='#1EBE5D'" onmouseout="this.style.background='#25D366'">
+          💬 Kirim ke WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header fade-up" style="text-align:center; max-width:600px; margin:0 auto 3rem;">
+      <div class="section-tag">FAQ</div>
+      <h2>Pertanyaan yang <em>Sering Ditanyakan</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up delay-1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Apakah ada jaminan hasil yang benar? <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Ya! Kami memberikan garansi revisi jika ada kesalahan dalam pengolahan data. Selain itu, kami juga menyertakan penjelasan di setiap hasil agar kamu benar-benar memahami output-nya.</div></div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Berapa lama pengerjaan selesai? <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Tergantung kompleksitas data. Untuk analisis standar (uji t, uji F, validitas) biasanya selesai dalam 1–24 jam. Untuk analisis kompleks seperti regresi berganda dengan uji asumsi, estimasi 1–2 hari kerja.</div></div>
+      </div>
+      <div class="faq-item fade-up delay-3">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Berapa biayanya? <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Harga menyesuaikan kebutuhan setelah konsultasi via WhatsApp. Kami tidak punya tarif pasti karena setiap data berbeda kompleksitasnya. Konsultasi awal GRATIS!</div></div>
+      </div>
+      <div class="faq-item fade-up delay-4">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Software apa saja yang bisa dibantu? <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Kami menguasai SPSS, Excel (advanced), R, dan Google Sheets. Untuk kebutuhan lain, silakan tanyakan langsung via WhatsApp.</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Apakah ini termasuk joki skripsi? <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Kami adalah jasa olah data dan konsultasi, bukan joki skripsi. Kami membantu kamu memahami dan mengolah data, bukan menggantikan pekerjaan akademik kamu secara keseluruhan. Hasil analisis tetap milikmu, kami memastikan prosesnya benar.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<div class="cta-section">
+  <div style="position:relative; z-index:1; max-width:700px; margin: 0 auto;">
+    <div class="section-tag" style="background: rgba(255,255,255,0.15); color:white; border-color: rgba(255,255,255,0.3); margin-bottom: 1rem;">Siap Memulai?</div>
+    <h2>Konsultasikan Kebutuhanmu <em>Sekarang</em></h2>
+    <p>Gratis tanpa syarat. Tim Sobat Data siap membantu dari Senin–Sabtu, 08.00–21.00 WIB.</p>
+    <a href="https://wa.me/6281234567890?text=Halo%20Sobat%20Data%2C%20saya%20ingin%20konsultasi%20olah%20data!" class="btn-wa">
+      <div class="wa-icon">💬</div>
+      Chat WhatsApp Sekarang
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="margin-bottom:0.75rem; display:inline-flex;">
+          <div class="logo-icon" style="background: linear-gradient(135deg, var(--blue-400), var(--cyan-500));">📊</div>
+          Sobat Data
+        </a>
+        <p>Sobat terpercaya untuk semua kebutuhan olah data kamu. Jasa profesional, tutorial gratis, konsultasi ramah.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#tutorial">Tutorial</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tutorial Populer</h4>
+        <ul>
+          <li><a href="#">Cara Uji t di SPSS</a></li>
+          <li><a href="#">Cara Uji F</a></li>
+          <li><a href="#">Uji Validitas SPSS</a></li>
+          <li><a href="#">Regresi Linear</a></li>
+          <li><a href="#">Membaca Output SPSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 Sobat Data. All rights reserved.</div>
+      <div>🤝 Sobat Terpercaya untuk Semua Kebutuhan Olah Data Anda</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // MOBILE MENU
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('open');
+  }
+
+  // TAB SWITCH
+  function switchTab(tab, btn) {
+    document.getElementById('tab-akademik').style.display = tab === 'akademik' ? 'grid' : 'none';
+    document.getElementById('tab-bisnis').style.display = tab === 'bisnis' ? 'grid' : 'none';
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // FAQ TOGGLE
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // FORM → WHATSAPP
+  function submitToWA() {
+    const nama = document.getElementById('formNama').value.trim();
+    const layanan = document.getElementById('formLayanan').value;
+    const kebutuhan = document.getElementById('formKebutuhan').value.trim();
+    if (!nama || !layanan || !kebutuhan) {
+      alert('Mohon lengkapi semua field terlebih dahulu.');
+      return;
+    }
+    const msg = encodeURIComponent(
+      `Halo Sobat Data! 👋\n\nNama: ${nama}\nLayanan: ${layanan}\nKebutuhan: ${kebutuhan}\n\nMohon bantuannya ya!`
+    );
+    window.open(`https://wa.me/6281234567890?text=${msg}`, '_blank');
+  }
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // STICKY NAV SHADOW
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+  });
+</script>
+</body>
+</html>
